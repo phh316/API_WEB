@@ -83,7 +83,29 @@ class CHROME(BROWSER):
         return chrome
 
 
-with CHROME().browser as _chrome:
-    _chrome.get('https://www.fastmock.site/#/login')
-    from time import sleep
-    sleep(5)
+class IE(BROWSER):
+    """ie浏览器"""
+    CLEAN_SESSION = True
+
+    def __init__(self):
+        super(IE, self).__init__(
+            browser_option = IeOptions,
+            browser_path = super().IE_DRIVER_PATH,
+            browser_type = Ie
+        )
+
+    @property
+    def option(self):
+        ie_option = self._option()
+        ie_option.ensure_clean_session = self.CLEAN_SESSION
+        return ie_option
+
+    @property
+    def browser(self):
+        ie = self._browser(self._path, options=self.option)
+        ie.implicitly_wait(self.IMP_TIME)
+        ie.set_page_load_timeout(self.PAGE_LOAD_TIME)
+        ie.set_script_timeout(self.SCRIPT_TIME_OUT)
+        ie.maximize_window()
+        return ie
+

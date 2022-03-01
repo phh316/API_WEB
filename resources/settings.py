@@ -4,20 +4,25 @@
 # @Author : Ph
 # @File : settings.py
 from typing import List
-import os
+import os.path
+from os.path import join
+
+"""项目地址"""
+PROJECT_URL = 'http://127.0.0.1/zentao/user-login.html'
 
 """文件路径"""
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MOUDLE_DIR_PATH = os.path.join(BASE_DIR, '../module')
 REPORT_DIR_PATH = os.path.join(BASE_DIR, '../report')
+ELEMENTS_YML_FILE_PATH = join(BASE_DIR, '../yml')
+
 REPORT_FILE_PATH = r'\\report.html'
 
 '''模块1 测试套件'''
-SUIT_MODULE_1 = ['module_1.py','module_2.py']
+SUIT_MODULE_1 = ['module_1.py', 'module_2.py']
 
 '''测试主模块'''
 SUIT_PROJRCT: List[str] = SUIT_MODULE_1
-
 
 '''浏览器驱动路径'''
 CHROME_DRIVER_PATH = '../drivers/chrome_driver_v97.exe'
@@ -39,7 +44,7 @@ SCRIPT_TIME_OUT = 30
 '''无头化'''
 HEADLESS = False
 
-#chrome 属性
+# chrome 属性
 '''操作开关'''
 CHROME_OPTION_MARK = True
 '''方法开关'''
@@ -48,19 +53,36 @@ CHROME_METHOD_MARK = True
 CHROME_START_MAX = '--start-maximized'
 '''启动参数'''
 CHROME_EXP = {
-    'excludeSwitches': ['enable-automation','load-extension'],
-    'prefs':{
+    'excludeSwitches': ['enable-automation', 'load-extension'],
+    'prefs': {
         'credentials_enable_service': False,
         'profile': {
-         'password_manager_enabled': False
+            'password_manager_enabled': False
         }
     },
 }
 
-#ie参数
+# ie参数
 '''启动参数开关'''
 IE_MARK = True
 '''清空本地会话'''
 IE_CLEAN_SESSION = True
 '''页面超时时间'''
 IE_ATTACH_TIME = 30
+
+'''YML文件绝对路径'''
+YML_ELEMENT = {
+    'cp': join(ELEMENTS_YML_FILE_PATH, 'common_login_page.yml'),
+    'sp': join(ELEMENTS_YML_FILE_PATH, 'main_page.yml')
+}
+'''selenium 的元素定位方式'''
+BY_RULES = (
+    'id',
+    'xpath',
+    'link text',
+    'partial link text',
+    'name',
+    'tag name',
+    'class name',
+    'css selector'
+)

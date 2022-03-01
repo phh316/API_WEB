@@ -27,12 +27,7 @@ class YamlReader(File):
         if not self._data:
             with open(self._file_path, 'rb') as f:
                 if self._multi:
-                    self._data = list(safe_load_all())
+                    self._data = list(safe_load_all(f))
                 else:
                     self._data = safe_load(f)
         return self._data
-
-
-if __name__ == '__main__':
-    ini = YamlReader(r'D:\python_spaces\pythonProject\API_WEB\resources\demo.yml').data
-    print(ini)

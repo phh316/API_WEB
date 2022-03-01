@@ -1,0 +1,9 @@
+username:
+  - id
+  - account
+password:
+  - name
+  - password
+loginBtn:
+  - id
+  - submit

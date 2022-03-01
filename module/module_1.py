@@ -4,21 +4,19 @@
 # @Author : Ph
 # @File : module_1.py
 import unittest
-from unittest import skipIf, skip, skipUnless
+from base.base_pase import MainPage
 
 
-class M1(unittest.TestCase):
+class M1(unittest.TestCase,MainPage):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.cls_get()
+        cls.cls_login()
+        assert cls.cls_element('sp.user_name').text == 'admin'
+        print('test_login is ok')
 
-    @skip("用户密码不能为空")
-    def test_a(self):
-        print(f"222")
+    def test_0_0(self):
+        pass
 
-    @skipIf(1 == 1, "用户名等于张三")
-    def test_b(self):
-        print(f"2333")
-
-    @skipUnless(1 == 10, "条件为假")
-    def test_c(self):
-        print(f"444")
 
 

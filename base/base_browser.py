@@ -7,7 +7,7 @@
 from selenium.webdriver import *
 from typing import Type, Union
 from selenium.webdriver.chromium.options import ChromiumOptions
-from settings import *
+from resources.settings import *
 
 
 class BrowserTypeError(Exception):
@@ -84,28 +84,45 @@ class CHROME(BROWSER):
 
 
 class IE(BROWSER):
-    """ie浏览器"""
-    CLEAN_SESSION = True
 
+    #清空缓存
+    CLEAN_SESSION = True
+    IE_MARK = IE_MARK
+    IE_ATTACH_TIME = IE_ATTACH_TIME
+
+    """IE浏览器基类"""
     def __init__(self):
         super(IE, self).__init__(
-            browser_option = IeOptions,
-            browser_path = super().IE_DRIVER_PATH,
-            browser_type = Ie
+            browser_path=super().IE_DRIVER_PATH,
+            browser_type=Ie,
+            browser_option=IeOptions
+
         )
 
     @property
     def option(self):
-        ie_option = self._option()
-        ie_option.ensure_clean_session = self.CLEAN_SESSION
+        if self.IE_MARK:
+            ie_option = self._option()
+            ie_option.ensure_clean_session = self.CLEAN_SESSION
         return ie_option
 
     @property
     def browser(self):
-        ie = self._browser(self._path, options=self.option)
-        ie.implicitly_wait(self.IMP_TIME)
-        ie.set_page_load_timeout(self.PAGE_LOAD_TIME)
-        ie.set_script_timeout(self.SCRIPT_TIME_OUT)
-        ie.maximize_window()
-        return ie
+        ie_browser = self._browser(self._path,options=self.option)
+        ie_browser.set_script_timeout(self.SCRIPT_TIME_OUT)
+        ie_browser.set_page_load_timeout(self.IE_ATTACH_TIME)
+        ie_browser.implicitly_wait(self.IMP_TIME)
+        ie_browser.maximize_window()
+        return ie_browser
 
+
+
+# with IE().browser as _chrome:
+#     _chrome.get('https://www.fastmock.site/#/login')
+#     from time import sleep
+#     sleep(5)
+
+# with CHROME().browser as _chrome:
+#     _chrome.get('https://www.fastmock.site/#/login')
+#     from time import sleep
+#     sleep(5)

@@ -6,7 +6,7 @@ rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
 
 from resources.settings import MOUDLE_DIR_PATH,SUIT_PROJRCT,REPORT_DIR_PATH,REPORT_FILE_PATH
-from common.HtmlTestRunner import HTMLTestRunner
+from common.HTMLTestRunner import HTMLTestRunner
 file_path = REPORT_DIR_PATH+REPORT_FILE_PATH
 #创建测试套件实例
 suite = unittest.TestSuite()

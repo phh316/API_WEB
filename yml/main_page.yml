@@ -5,10 +5,10 @@ searchInput:
 searchGo:
   - id
   - searchGo
-assert_user_name:
+user_name:
   - xpath
-  - //*[@id="userNav"]/li/a/span[1]
-assert_bug_label:
+  - //span[@class="user-name"]
+bug_label:
   - xpath
   - //*[@id="mainMenu"]/div[1]/div[2]/span[1]
 exit:

@@ -16,7 +16,12 @@ class M1(unittest.TestCase,MainPage):
         print('test_login is ok')
 
     def test_0_0(self):
-        pass
+        print("----------------")
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        cls.driver.quit()
+
 
 
 

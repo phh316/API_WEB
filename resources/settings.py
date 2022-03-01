@@ -72,7 +72,7 @@ IE_ATTACH_TIME = 30
 
 '''YML文件绝对路径'''
 YML_ELEMENT = {
-    'cp': join(ELEMENTS_YML_FILE_PATH, 'common_login_page.yml'),
+    'cp': join(ELEMENTS_YML_FILE_PATH, 'login_page.yml'),
     'sp': join(ELEMENTS_YML_FILE_PATH, 'main_page.yml')
 }
 '''selenium 的元素定位方式'''

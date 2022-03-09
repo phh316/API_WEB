@@ -27,7 +27,7 @@ SUIT_PROJRCT: List[str] = SUIT_MODULE_1
 '''浏览器驱动路径'''
 CHROME_DRIVER_PATH = '../drivers/chrome_driver_v97.exe'
 EDGE_DRIVER_PATH = '../drivers/edge_driver.exe'
-FIREFOX_DRIVER_PATH = '../drivers/gecko_driver.exe'
+FIREFOX_DRIVER_PATH = '../drivers/geckodriver64.exe'
 IE_DRIVER_PATH = '../drivers/IEDriverServer3.9.exe'
 OPERA_DRIVER_PATH = '../drivers/opera_driver.exe'
 

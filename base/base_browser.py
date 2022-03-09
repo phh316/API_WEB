@@ -117,10 +117,10 @@ class IE(BROWSER):
 
 
 
-# with IE().browser as _chrome:
-#     _chrome.get('https://www.fastmock.site/#/login')
-#     from time import sleep
-#     sleep(5)
+with IE().browser as _chrome:
+    _chrome.get('https://www.fastmock.site/#/login')
+    from time import sleep
+    sleep(5)
 
 # with CHROME().browser as _chrome:
 #     _chrome.get('https://www.fastmock.site/#/login')
